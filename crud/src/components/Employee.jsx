@@ -47,16 +47,6 @@ const Employee = () => {
         }
     }
 
-    function saveEmployee(e) {
-        e.preventDefault();
-        const employee = { firstName, lastName, salary }
-        console.log(employee)
-        axios.post('http://localhost:9092/employee/', employee).then(() => {
-            console.log(employee);
-            navigate('/employees')
-        })
-    }
-
     function pageTitle() {
         if (id) {
             return <h2 className='text-center'> Update Employee </h2>
@@ -71,7 +61,7 @@ const Employee = () => {
             <div className='row'>
                 <div className='card'>
                     {pageTitle()}
-                    <div className='card-body'></div>
+                    <div className='card-body'>
                     <form>
 
                         <div className='form-group mb-2 '>
@@ -108,6 +98,7 @@ const Employee = () => {
                         <button className='btn btn-success' onClick={saveOrUpdateEmployee}>Submit</button>
 
                     </form>
+                    </div>
 
                 </div>
             </div>
