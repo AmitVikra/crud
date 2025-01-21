@@ -1,7 +1,7 @@
 
 import './App.css'
 import Employee from './components/Employee'
-import HelloWorld from './components/HelloWorld'
+import Header from './components/Header'
 import ListEmployee from './components/ListEmployee'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <HelloWorld />
+        <Header />
         <Routes>
           <Route path='/' element={<ListEmployee />} />
           <Route path='/employees' element={<ListEmployee />} />

@@ -14,7 +14,7 @@ const Employee = () => {
 
     useEffect(() => {
         if (id) {
-            axios.get(`http://localhost:9092/employee/` + id).then((response) => {
+            axios.get(`http://localhost:9092/employee/${id}`).then((response) => {
                 setFirstName(response.data.firstName);
                 setLastName(response.data.lastName);
                 setSalary(response.data.salary);
@@ -25,13 +25,13 @@ const Employee = () => {
 
     }, [id])
 
-    function saveOrUpdateEmployee(e) {
+    const saveOrUpdateEmployee = (e) => {
         e.preventDefault();
         const employee = { firstName, lastName, salary }
         console.log(employee)
 
         if (id) {
-            axios.put(`http://localhost:9092/employee/` + id, employee).then((response) => {
+            axios.put(`http://localhost:9092/employee/${id}`, employee).then((response) => {
                 console.log(response.data);
                 navigate('/employees')
             }).catch((error) => {
@@ -47,7 +47,7 @@ const Employee = () => {
         }
     }
 
-    function pageTitle() {
+    const pageTitle = ()=> {
         if (id) {
             return <h2 className='text-center'> Update Employee </h2>
         } else {

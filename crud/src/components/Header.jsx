@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HelloWorld = () => {
+const Header = () => {
   return (
     <div>
       <h1 className='text-center'>Header</h1>
@@ -8,4 +8,4 @@ const HelloWorld = () => {
   )
 }
 
-export default HelloWorld
+export default Header

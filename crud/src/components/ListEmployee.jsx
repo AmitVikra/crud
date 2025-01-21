@@ -11,7 +11,7 @@ const ListEmployee = () => {
         getAllEmployees();
     }, []);
 
-    function getAllEmployees(){
+    const getAllEmployees = ()=>{
         axios.get('http://localhost:9092/employee/all').then((response) => {
             setEmployee(response.data);
         }).catch((error) => {
@@ -19,16 +19,17 @@ const ListEmployee = () => {
         });
     }
 
-    function addNewEmployee(){
+    const addNewEmployee = ()=>{
         navigate('/add-employee')
     }
 
-    function updateEmployee(id){
+    const updateEmployee = (id) => {
         navigate(`/edit-employee/${id}`)
     }
-    function deleteEmployee(id){
+
+    const deleteEmployee = (id) => {
         console.log(id);
-        axios.delete(`http://localhost:9092/employee/`+id).then((response) => {
+        axios.delete(`http://localhost:9092/employee/${id}`).then((response) => {
             console.log(response.data);
             getAllEmployees();
         }).catch(error =>{
