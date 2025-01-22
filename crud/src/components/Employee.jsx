@@ -22,7 +22,6 @@ const Employee = () => {
                 console.error(error)
             )
         }
-
     }, [id])
 
     const saveOrUpdateEmployee = (e) => {
@@ -37,7 +36,7 @@ const Employee = () => {
             }).catch((error) => {
                 console.error(error);
             })
-        }else{
+        } else {
             axios.post('http://localhost:9092/employee/', employee).then((response) => {
                 console.log(employee);
                 navigate('/employees')
@@ -47,7 +46,7 @@ const Employee = () => {
         }
     }
 
-    const pageTitle = ()=> {
+    const pageTitle = () => {
         if (id) {
             return <h2 className='text-center'> Update Employee </h2>
         } else {
@@ -62,48 +61,44 @@ const Employee = () => {
                 <div className='card'>
                     {pageTitle()}
                     <div className='card-body'>
-                    <form>
+                        <form>
+                            <div className='form-group mb-2 '>
+                                <label className='form-label'>First Name</label>
+                                <input className='form-control'
+                                    type="text"
+                                    placeholder='Enter First Name'
+                                    name='firstName'
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                />
+                            </div>
+                            <div className='form-group mb-2'>
+                                <label className='form-label' >Last Name</label>
+                                <input className='form-control'
+                                    type="text"
+                                    placeholder='Enter Last Name'
+                                    name='lastname'
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                />
+                            </div>
+                            <div className='form-group mb-2'>
+                                <label className='form-label'> Salary</label>
+                                <input className='form-control'
+                                    type='number'
+                                    placeholder='Enter salary'
+                                    value={salary}
+                                    name='salary'
+                                    onChange={(e) => setSalary(e.target.value)}
+                                />
+                            </div>
 
-                        <div className='form-group mb-2 '>
-                            <label className='form-label'>First Name</label>
-                            <input type="text"
-                                placeholder='Enter First Name'
-                                name='firstName'
-                                value={firstName}
-                                className='form-control'
-                                onChange={(e) => setFirstName(e.target.value)}
-                            />
-                        </div>
-                        <div className='form-group mb-2'>
-                            <label className='form-label' >Last Name</label>
-                            <input type="text"
-                                placeholder='Enter Last Name'
-                                name='lastname'
-                                value={lastName}
-                                className='form-control'
-                                onChange={(e) => setLastName(e.target.value)}
-                            />
-                        </div>
-                        <div className='form-group mb-2'>
-                            <label className='form-label'> Salary</label>
-                            <input type='number'
-                                placeholder='Enter salary'
-                                value={salary}
-                                name='salary'
-                                className='form-control'
-                                onChange={(e) => setSalary(e.target.value)}
-                            />
-                        </div>
+                            <button className='btn btn-success' onClick={saveOrUpdateEmployee}>Submit</button>
 
-                        <button className='btn btn-success' onClick={saveOrUpdateEmployee}>Submit</button>
-
-                    </form>
+                        </form>
                     </div>
-
                 </div>
             </div>
-
-
         </div>
     )
 }
