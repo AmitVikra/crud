@@ -7,9 +7,7 @@ const Employee = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [salary, setSalary] = useState('');
-
     const { id } = useParams();
-
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,9 +16,7 @@ const Employee = () => {
                 setFirstName(response.data.firstName);
                 setLastName(response.data.lastName);
                 setSalary(response.data.salary);
-            }).catch(error =>
-                console.error(error)
-            )
+            }).catch(error => console.error(error) )
         }
     }, [id])
 
@@ -53,7 +49,6 @@ const Employee = () => {
             return <h2 className='text-center'> Add Employee</h2>
         }
     }
-
 
     return (
         <div className='container col-md-5'>
